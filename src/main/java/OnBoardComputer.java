@@ -19,7 +19,12 @@ public class OnBoardComputer implements BurnStream {
             System.out.println(burn);
             return burn;
         }
-        burn = 100 + (status.Velocity/2);
+        if(status.Altitude > 100){
+            burn = 100;
+        }
+        else{
+            burn = 100 + (status.Velocity/2);
+        }
         System.out.println(burn);
         return burn;
     }
