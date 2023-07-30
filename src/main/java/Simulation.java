@@ -64,8 +64,10 @@ public class Simulation {
             if (burnInterval % 9 == 0) {
                 printString(getHeader());
             }
+
         }
         printString(vehicle.checkFinalStatus());
+        status = vehicle.getStatus(10);
         if (status != null) {
             return status.getStatus();
         }
