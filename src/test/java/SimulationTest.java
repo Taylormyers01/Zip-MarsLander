@@ -1,6 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.sql.SQLOutput;
+
 import static org.junit.Assert.*;
 
 public class SimulationTest {
@@ -41,6 +43,23 @@ public class SimulationTest {
         //Simulation game = new Simulation(new Vehicle(19998));
         int okay = game.runSimulation(burnSource);
         Assert.assertEquals(okay, Vehicle.SUCCESS);
+    }
+
+    //Got this test from Ricky, wanted to test the rigidity
+    @Test
+    public void runSimulationTooManyTimes(){
+        int totalTest = 200000;
+        int successCount = 0;
+        for(int i = 0; i<totalTest;i++){
+                OnBoardComputer bs = new OnBoardComputer();
+                Simulation game = new Simulation(new Vehicle(Simulation.randomaltitude()));
+                int okay = game.runSimulation(bs);
+                if(okay==0){
+                    successCount++;
+                }
+        }
+        System.out.println("Number of successful tests: " + successCount);
+        System.out.println("Total failed tests: " + (totalTest - successCount));
     }
 
 }
